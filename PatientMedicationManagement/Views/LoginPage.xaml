@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PatientMedicationManagement.Views.LoginPage"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Login Page">
+    <ContentPage.ToolbarItems>
+            <ToolbarItem Text="Login" Clicked="login_Clicked" />
+    </ContentPage.ToolbarItems>
+             
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="User Name" FontSize="Medium" />
+            <Entry Text="{Binding loginM.UserName}" d:Text="Your Name" FontSize="Small" />
+            <Label Text="Password" FontSize="Medium" />
+            <Entry IsPassword="true" Text="{Binding loginM.Password}" FontSize="Small" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
