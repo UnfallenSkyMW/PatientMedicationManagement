@@ -12,11 +12,7 @@ namespace PatientMedicationManagement.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-
-        public string UserName{get;set;}
-        public string Password { get; set; }
-
+        public IDataStore<MedicationModel> DataStore => DependencyService.Get<IDataStore<MedicationModel>>();
 
         bool isBusy = false;
         public bool IsBusy

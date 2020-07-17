@@ -24,7 +24,7 @@ namespace PatientMedicationManagement.Views
           
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel() { UserName = "123 User"};
+            BindingContext = viewModel = new ItemsViewModel() {};
 
 
             
@@ -40,7 +40,7 @@ namespace PatientMedicationManagement.Views
         async void OnItemSelected(object sender, EventArgs args)
         {
             var layout = (BindableObject)sender;
-            var item = (Item)layout.BindingContext;
+            var item = (MedicationModel)layout.BindingContext;
             await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
         }
 
@@ -53,7 +53,7 @@ namespace PatientMedicationManagement.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
+            if (viewModel.MedicineItems.Count == 0)
                 viewModel.IsBusy = true;
         }
     }

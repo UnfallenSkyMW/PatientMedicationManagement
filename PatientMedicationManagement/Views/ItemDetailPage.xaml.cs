@@ -26,9 +26,9 @@ namespace PatientMedicationManagement.Views
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new MedicationModel
             {
-                Text = "Item 1",
+                Id = "Item 1",
                 Description = "This is an item description."
             };
 

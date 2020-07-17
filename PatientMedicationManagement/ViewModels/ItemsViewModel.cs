@@ -12,49 +12,34 @@ namespace PatientMedicationManagement.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<MedicationModel> MedicineItems { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            MedicineItems = new ObservableCollection<MedicationModel>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewItemPage, MedicationModel>(this, "AddItem", async (obj, item) =>
             {
-                var newItem = item as Item;
-                item.TestName = "123 User";
-                Items.Add(newItem);
+                var newItem = item as MedicationModel;
+                MedicineItems.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
             });
         }
-        public ItemsViewModel(string username)
-        {
-            Title = "Browse";
-            Items = new ObservableCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
-            {
-                var newItem = item as Item;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
-            });
-            UserName = username;
-        }
-
+        
         async Task ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 
             try
             {
-                Items.Clear();
+                MedicineItems.Clear();
                 var items = await DataStore.GetItemsAsync(true);
                 foreach (var item in items)
                 {
-                    Items.Add(item);
+                    MedicineItems.Add(item);
                 }
             }
             catch (Exception ex)

@@ -92,5 +92,8 @@
       <Name>PatientMedicationManagement</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidNativeLibrary Include="Resources\1.jpeg" />
+  </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
